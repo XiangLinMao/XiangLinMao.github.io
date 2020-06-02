@@ -1,0 +1,572 @@
+@font-face{
+	font-family:'Font Awesome 5 Free';
+	font-style:normal;
+	font-weight:900;
+	font-display:swap;
+	src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.eot);
+	src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/webfonts/fa-solid-900.svg#fontawesome) format("svg")
+}
+.fas {font-family: 'Font Awesome 5 Free';font-weight: 900}
+.fa-chevron-up:before {content: "\f077"}
+.fa-child:before {content: "\f1ae"}
+.fa-location-arrow:before {content: "\f124"}
+.fa-plus:before {content: "\f067"}
+.fa-minus:before {content: "\f068"}
+.fa-question:before {content: "\f128"}
+.fa-map-marked-alt:before {content: "\f5a0"}
+.fa-phone:before {content: "\f095"}
+.fa-sync-alt:before {content: "\f2f1"}
+.fa-sticky-note:before {content: "\f249"}
+.fa-marker:before {content: "\f5a1"}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container-1{
+	width: 100px;
+	vertical-align: middle;
+	white-space: nowrap;
+	margin-right: 50px;
+}
+
+
+.container-1 input#search{
+	width: 180px;
+	height: 30px;
+	background: #2b303b;
+	border: none;
+	font-size: 10pt;
+	float: left;
+	color: #262626;
+	padding-left: 45px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+   
+	 
+	-webkit-transition: background .55s ease;
+	-moz-transition: background .55s ease;
+	-ms-transition: background .55s ease;
+	-o-transition: background .55s ease;
+	transition: background .55s ease;
+}
+
+.container-1 .icon{
+	position: absolute;
+	top: 50%;
+	margin-left: 17px;
+	margin-top: 17px;
+	z-index: 1;
+	color: #4f5b66;
+  }
+
+.container-1 input#search::-webkit-input-placeholder {
+	color: #65737e;
+}
+  
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+	color: #65737e;  
+}
+  
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+	color: #65737e;  
+}
+  
+.container-1 input#search:-ms-input-placeholder {  
+	color: #65737e;  
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 20px;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+  }
+  #app { width: 100%;height: 100%; }
+html {
+	font: 18px/2 "Noto Sans","Noto Sans TC", sans-serif;
+	color: #333
+}
+body {
+	position: relative;
+	margin: 0;
+	overflow: hidden
+}
+a {
+	border-bottom: 1px solid;
+	color: inherit;
+	text-decoration: none;
+	transition: all .2s ease
+}
+a:hover {
+	border-color: transparent
+}
+#information {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 0 1rem 1rem 0;
+	padding: 1rem;
+	width: 17rem;
+	max-height: 100vh;
+	background: rgba(255,255,255,.8);
+	box-sizing: border-box;
+	text-align: center;
+	overflow: hidden auto;
+	z-index: 1000;
+	transition: all .2s ease;
+	box-shadow: 0 0 1rem 1rem rgba(0,0,0,.1);
+}
+#information.close {
+	transform: translate(-100%,0);
+}
+#information .icon-information {
+	margin: 1rem 0;
+	text-align: left;
+}
+#information .icon-information .item {
+	margin: 1rem 0;
+	height: 50px;
+	line-height: 50px;
+	white-space:nowrap;
+}
+#information .icon-information .item img {
+	margin-right: 1rem;
+	height: 50px;
+	vertical-align: middle;
+}
+#information .icon-information .area {
+	display: inline-block;
+	position: relative;
+	margin-right: 1rem;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+}
+#information .icon-information .area:before,#information .icon-information .area:after {
+	content:"";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border-radius: 50%;
+	transform: translate(-50%,-50%);
+	background: rgba(16, 120, 121, .75);
+}
+#information .icon-information .area:before {
+	width: 50px;
+	height: 50px;
+	z-index: -2;
+}
+#information .icon-information .area:after {
+	width: 30px;
+	height: 30px;
+	z-index: -1;
+}
+#information .icon-information span {
+	vertical-align: middle;
+}
+#logo {
+	margin: 0 0 1rem;
+	font-size: 1.5rem;
+}
+#purchase-information #parity {
+	margin-right: 1rem;
+	font-size: 2rem;
+	font-weight: bold
+}
+#purchase-information #day {
+	color: #777
+}
+.legend {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	border-radius: 1rem;
+	overflow: hidden
+}
+.legend div {
+	flex: 1;
+	padding: .3rem;
+}
+.legend .sufficient,#app .sufficient:before,#app .sufficient:after {
+	background: rgba(16, 120, 121, .75);
+}
+.legend .warning,#app .warning:before,#app .warning:after {
+	background: rgba(230, 127, 34, .65);
+}
+.legend .emergency,#app .emergency:before,#app .emergency:after {
+	background: rgba(233, 30, 58, .3);
+	color: #333;
+}
+.legend .sold-out,#app .sold-out:before,#app .sold-out:after {
+	background: rgba(153,153,153,.5);
+}
+.copyright {
+	font-size: .9rem;
+	color: #555
+}
+.sufficient,.emergency {
+	color: #fff
+}
+.warning,.sold-out{
+	color: #333
+}
+#description {
+	margin: 1rem 0;
+	padding-left: 1rem;
+	text-align: left;
+	font-size: .9rem;
+	color: #555;
+}
+#description li {
+	margin: 1rem 0
+}
+#control-panel {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	margin: .5rem;
+	z-index: 1001;
+	transition: all .2s ease
+}
+#control-panel button,#guide button {
+	outline: none;
+	position: relative;
+	display: block;
+	margin: .5rem;
+	padding: 0;
+	border: 1px solid #eee;
+	border-radius: .5rem;
+	width: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	background: rgba(255,255,255,.8);
+	font-family:inherit;
+	font-size: 1rem;
+	text-align: center;
+	cursor: pointer;
+	transition: all .2s ease;
+}
+#control-panel button:hover {
+	background: #fff
+}
+#control-panel button:before {
+	content: attr(data-tooltip);
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	padding: 0 1rem;
+	border-radius: .2rem;
+	background: #3E474F;
+	color: #EDEFF0;
+	white-space:pre;
+	transform: translate(20%,-50%) scale(.7);
+	transition: all .3s cubic-bezier(0.42, 0, 0.48, 0.9);
+	opacity: 0;
+	visibility: hidden;
+}
+#control-panel button:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	width: 0;
+	height: 0;
+	border-left: .8rem solid #3E474F;
+	border-top: .8rem solid transparent;
+	border-bottom: .8rem solid transparent;
+	transform: translate(0,-50%) scale(.7);
+	transition: all .3s cubic-bezier(1, 0.03, 0, 0.92);
+	opacity: 0;
+	visibility: hidden;
+}
+#control-panel button:hover:before {
+	transform: translate(-.7rem,-50%);
+	opacity: 1;
+	visibility: visible;
+}
+#control-panel button:hover:after {
+	transform: translate(0,-50%);
+	opacity: 1;
+	visibility: visible;
+}
+#control-panel #menu {
+	position: fixed;
+	top: 1rem;
+	left: 17rem;
+	transform: rotate(-90deg)
+}
+#control-panel #menu.close {
+	transform: rotate(90deg);
+	left: 1rem;
+}
+#control-panel #menu:before,#control-panel #menu:after {
+	display: none;
+}
+#control-panel #mask-toggle.child {
+	border-color: rgb(16, 120, 121);
+	background: rgba(16, 120, 121, .8);
+	color: #fff;
+}
+#control-panel #mask-toggle.child:hover {
+	background: rgb(16, 120, 121);
+}
+#guide {
+	position: fixed;
+	top: 0;
+	left: 20rem;
+	right: 4rem;
+	bottom: 0;
+	margin: 1rem;
+	padding: 1rem 2rem;
+	border-radius: 2rem;
+	background: rgba(255,255,255,.9);
+	transition: all .3s ease-in-out;
+	z-index: 1002;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden auto;
+	box-shadow: 0 0 1rem 1rem rgba(0,0,0,.1);
+}
+#guide.open {
+	opacity: 1;
+	visibility: visible;
+}
+#app {
+	width: 100%;
+	height: 100vh;
+	font: inherit;
+}
+#app a {
+	color: #333
+}
+#app .leaflet-popup-close-button {
+	padding: .5rem .5rem 0 0;
+	font-size: 1.2rem;
+}
+#app .animation {
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+#app .icon-cluster {
+	border-radius: 50%;
+	line-height: 30px;
+	text-align: center;
+	font-size: 1rem;
+}
+#app .icon-cluster:before,#app .icon-cluster:after {
+	content:"";
+	position:absolute;
+	top:50%;
+	left:50%;
+	border-radius: 50%;
+	transform: translate(-50%,-50%);
+}
+#app .icon-cluster:before {
+	width: 50px;
+	height: 50px;
+	z-index: -2
+}
+#app .icon-cluster:after {
+	width:30px;
+	height:30px;
+	z-index:-1
+}
+#app .leaflet-popup-content p {
+	margin: 1rem 0;
+}
+#app .user-location {
+	font-weight: bold;
+	text-align: center
+}
+#app .loc-accuracy {
+	text-align: center
+}
+#app .store-information {
+	position: relative;
+	z-index: 0
+}
+#app .store-information:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 1.5rem;
+	width: 8rem;
+	height: 8rem;
+	background: url(../images/sale.svg) center/contain no-repeat;
+	opacity: .1;
+	z-index: -1
+}
+#app .store-information .store-status {
+	display: flex;
+	flex-direction: row
+}
+#app .store-information .store-status .container {
+	position: relative;
+	margin: .5rem;
+	padding: 0 1rem;
+	border-radius: 1rem;
+	width: 8rem;
+	line-height: 1.2;
+	overflow: hidden;
+}
+#app .store-information .store-status .container:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 6rem;
+	height: 6rem;
+	transform: translate(1.5rem,1rem);
+	opacity: .5
+}
+#app .store-information .store-status .sufficient {
+	background: rgb( 16,120,121)
+}
+#app .store-information .store-status .sufficient:before {
+	background: url(../images/tick.svg) center/contain no-repeat
+}
+#app .store-information .store-status .warning {
+	background: rgb(230,127, 34);
+	color: #fff
+}
+#app .store-information .store-status .warning:before {
+	background: url(../images/alert.svg) center/contain no-repeat
+}
+#app .store-information .store-status .emergency {
+	background: rgb(233, 30, 58)
+}
+#app .store-information .store-status .emergency:before {
+	background: url(../images/siren.svg) center/contain no-repeat
+}
+#app .store-information .store-status .sold-out {
+	background: rgb(153,153,153)
+}
+#app .store-information .store-status .sold-out:before {
+	background: url(../images/cross.svg) center/contain no-repeat
+}
+#app .store-information .store-status .number {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+#app .store-information .detail {
+	display: flex;
+	align-items: center
+}
+#app .store-information .detail .icon {
+	margin-right: 1rem;
+	width: 1rem;
+}
+#app .store-information .store-name {
+	margin: 1rem .5rem;
+	padding-left: .7rem;
+	border-left: .3rem solid rgb( 16,120,121);
+	font-size: 1.2rem;
+	font-weight: bold
+}
+#app .store-information .store-distance {
+	display: inline-block;
+	margin: 0 0 0 1rem;
+	padding: .2rem 1rem;
+	border-radius: .5rem;
+	line-height: 1.2rem;
+	font-size: .8rem;
+	font-weight: normal;
+	color: #555;
+	background: #eee;
+	vertical-align: text-top;
+}
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+	transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+.leaflet-cluster-spider-leg {
+	transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #ff7006;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+@media screen and (max-width: 768px) {
+	html {
+		font-size: 16px
+	}
+	#app {
+		height: calc(100vh - 4rem);
+	}
+	#information {
+		top: 40%;
+		bottom: 4rem;
+		border-radius: 2rem 2rem 0 0;
+		width: 100%;
+	}
+	#information.close {
+		transform: translate(0,100%);
+	}
+	#control-panel {
+		margin: 0;
+		flex-direction: row;
+		justify-content: center;
+		left: 0;
+		background: #fff;
+	}
+	#control-panel button {
+		border: none;
+	}
+	#control-panel button:before, #control-panel button:after {
+		display: none;
+	}
+	#control-panel #menu {
+		position: static;
+		transform: rotate(180deg);
+	}
+	#control-panel #menu.close {
+		transform: rotate(0);
+	}
+	#guide {
+		left: 0;
+		right: 0;
+		bottom: 4rem;
+	}
+	.legend {
+		flex-direction: row;
+	}
+	.legend div {
+		padding: .5rem 0;
+	}
+	#app .store-information .store-status .container {
+		width: 6rem;
+		line-height: 1;
+	}
+	#app .store-information > p {
+		margin: .5rem 0;
+	}
+}

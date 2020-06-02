@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>個區段路線圖 | Wckblog</title>
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script async data-main="js/main" src="js/require.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-63074009-3');
+    </script>
+    <style>
+        html,body{
+        width: 100%;
+        height: 100%;
+    }
+        #app { width: 100%;height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="information">
+        <h1 id="logo">個區段路線圖</h1>
+        <div class="legend">
+            <div class="sufficient">請選擇你的區段</div>
+            <div class="warning"><select name="foo" width="100" style="width: 100px">
+                <option>內12</option></select>
+            </div>
+            <div class="emergency">關鍵字搜尋</div>
+            <div class="sold-out">
+                <div class="box">
+                    <div class="container-1">
+                        
+                        <span class="icon"><i class="fa fa-search"></i></span>
+                        <input type="search" id="search" placeholder="Search..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-information">
+            <div class="item">
+                <img src="images/sufficient.svg" alt="起點"><span>起點</span></span>
+            </div>
+            <div class="item">
+                <div class="area"></div><span>註記</span>
+            </div>
+        </div>
+    </div>
+    <div id="control-panel">
+        <button id="current-location" data-tooltip="移動至目前位置"><span class="fas fa-location-arrow"></span></button>
+        <button id="zoom-in" data-tooltip="放大"><span class="fas fa-plus"></span></button>
+        <button id="zoom-out" data-tooltip="縮小"><span class="fas fa-minus"></span></button>
+        <!--<button id="help" data-tooltip="使用手冊"><span class="fas fa-question"></span></button>-->
+        <button id="menu" data-tooltip="收合"><span class="fas fa-chevron-up"></span></button>
+    </div>
+    <!--<script type="text/javascript">
+
+        // 建立 Leaflet 地圖
+        
+        var map = L.map('app', {center: [24.736424,121.091371], zoom: 16});
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+      
+      </script>-->
+</body>
+</html>
