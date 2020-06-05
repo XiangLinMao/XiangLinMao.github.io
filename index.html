@@ -5,6 +5,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
     <title>個區段路線圖 | Zhudong Post Office</title>
     
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/main.css">
@@ -31,7 +32,7 @@
     <div id="information">
         <h1 id="logo">個區段路線圖</h1>
         <div class="legend">
-            <div class="sufficient">請選擇你的區段</div>
+            <div class="sufficient">選擇區段</div>
             <div class="warning">
                 <select name="foo" width="100" style="width: 100px">
                 <option>內1</option>
@@ -48,7 +49,7 @@
                 <option>內12</option>
                 </select>
             </div>
-            <div class="emergency">關鍵字搜尋</div>
+            <!--<div class="emergency">搜尋</div>
             <div class="sold-out">
                 <div class="box">
                     <div class="container-1">
@@ -56,7 +57,7 @@
                         <input type="search" id="search" placeholder="Search..." />
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="icon-information">
             <div class="item">
@@ -71,6 +72,8 @@
         <button id="current-location" data-tooltip="移動至目前位置"><span class="fas fa-location-arrow"></span></button>
         <button id="zoom-in" data-tooltip="放大"><span class="fas fa-plus"></span></button>
         <button id="zoom-out" data-tooltip="縮小"><span class="fas fa-minus"></span></button>
+        <button id="search" data-tooltip="搜尋"><span class="fa fa-search" aria-hidden="true"></span></button>
+        <!--<button id="search" data-tooltip="搜尋"><span class"fa fa-search" aria-hidden="true"></span></button>-->
         <!--<button id="help" data-tooltip="使用手冊"><span class="fas fa-question"></span></button>-->
         <button id="menu" data-tooltip="收合"><span class="fas fa-chevron-up"></span></button>
     </div>

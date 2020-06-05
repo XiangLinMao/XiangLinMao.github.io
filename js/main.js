@@ -47,7 +47,7 @@ window.addEventListener("load", function(){
 		map.setView([23.97565,120.97388], 6);
 		map.setMaxBounds([[90,-180], [-90,180]]);
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
-		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
+		document.getElementById("current-location").addEventListener("click",function(){map.zoomOut()});
 		document.getElementById("current-location").addEventListener("click",function(){
 			if(locationPermit) {
 				map.flyTo(currentMar.getLatLng(),18);
