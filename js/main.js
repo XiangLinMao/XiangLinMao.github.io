@@ -11,8 +11,8 @@ window.addEventListener("load", function(){
 		/*let map = L.map('app', {center: [24.736424,121.091371], zoom: 16}),*/
 		let map = L.map('app', {center: [24.736424,121.091371], zoom: 16,attributionControl:false,zoomControl:false,minZoom:3,maxZoom:19}),
 			/*openstreetmap*/
-			/*osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',*/
-			osmUrl="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+			osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			/*osmUrl="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",*/
 			osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 19}),
 			today = new Date(),
 			currentIcon = L.icon({iconUrl:"images/current.svg",className:"animation",iconSize:[24,24]}),
