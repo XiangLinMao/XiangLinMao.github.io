@@ -46,7 +46,7 @@ window.addEventListener("load", function(){
 		
 		map.addLayer(osm);
 
-		var marker = L.marker([24.736576,121.0928152]).addTo(map);
+		/*var marker = L.marker([24.736576,121.0928152]).addTo(map);*/
 		/*var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060]], { color: 'red' }).addTo(map);*/
 		
 		/*var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060], [24.735786, 121.093030], [24.735763, 121.095307], [24.735877, 121.095491]
@@ -57,7 +57,7 @@ window.addEventListener("load", function(){
 		, [24.721242, 121.093781], [24.721714, 121.093090], [24.722346, 121.093615], [24.722333, 121.093635], [24.722071, 121.094246]], { color: 'red' }).addTo(map);*/
 		
 		/*map.setView([23.97565,120.97388], 6);*/
-		map.setView([24.736424,121.091371], 6)
+		map.setView([24.736424,121.091371], 6);
 		map.setMaxBounds([[90,-180], [-90,180]]);
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
 		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
