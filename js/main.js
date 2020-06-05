@@ -10,7 +10,9 @@ window.addEventListener("load", function(){
 	require(["leaflet.markercluster"],function(){
 		/*let map = L.map('app', {center: [24.736424,121.091371], zoom: 16}),*/
 		let map = L.map('app', {center: [24.736424,121.091371], zoom: 16,attributionControl:false,zoomControl:false,minZoom:3,maxZoom:19}),
-			osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			/*openstreetmap*/
+			/*osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',*/
+			osmUrl="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
 			osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 19}),
 			today = new Date(),
 			currentIcon = L.icon({iconUrl:"images/current.svg",className:"animation",iconSize:[24,24]}),
@@ -43,8 +45,15 @@ window.addEventListener("load", function(){
 			locationPermit = false;
 		
 		map.addLayer(osm);
+
+		var marker = L.marker([24.736576,121.0928152]).addTo(map);
+		var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060], [24.735786, 121.093030], [24.735763, 121.095307], [24.735877, 121.095491
+		], [24.735770, 121.095911], [24.735160, 121.096410], [24.734312, 121.097556], [24.733147, 121.098852], [24.732874, 121.099241], [24.732673, 121.099633]
+		, [24.732145, 121.099994], [24.731755, 121.099992], [24.723404, 121.099311], [24.722261, 121.096405], [24.723836, 121.095439], [24.723298, 121.094466], [24.723158, 121.094324]
+		, [24.723907, 121.093562], [24.723367, 121.092973], [24.722961, 121.092547]], { color: 'red' }).addTo(map);
 		
-		map.setView([23.97565,120.97388], 6);
+		/*map.setView([23.97565,120.97388], 6);*/
+		map.setView([24.736424,121.091371], 6)
 		map.setMaxBounds([[90,-180], [-90,180]]);
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
 		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
