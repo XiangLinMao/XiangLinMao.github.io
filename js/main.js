@@ -46,7 +46,14 @@ window.addEventListener("load", function(){
 		
 		map.addLayer(osm);
 
-		var marker = L.marker([24.736576,121.0928152]).addTo(map);
+		map.setView([24.736576,121.0928152], 6);
+
+		var startpoint = new L.icon({iconUrl:"images/sufficient.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]});
+
+
+		var marker = L.marker([24.736576,121.0928152], {icon: startpoint}).addTo(map);
+		marker.bindPopup('<h1>竹東郵局</h1>')
+		/*marker.openPopup();*/
 		/*var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060]], { color: 'red' }).addTo(map);*/
 		
 		var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060], [24.735786, 121.093030], [24.735763, 121.095307], [24.735877, 121.095491]
@@ -57,10 +64,12 @@ window.addEventListener("load", function(){
 		, [24.721221, 121.093767], [24.721242, 121.093781], [24.721714, 121.093090], [24.722346, 121.093615], [24.722333, 121.093635], [24.722071, 121.094246], [24.721946, 121.094798]
 		, [24.721934, 121.094991], [24.721953, 121.095498], [24.722026, 121.095825], [24.722202, 121.096458], [24.723177, 121.098576], [24.722642, 121.098769], [24.722501, 121.098392]
 		, [24.722480, 121.098401], [24.722621, 121.098773], [24.722324, 121.098884], [24.722058, 121.098138], [24.722703, 121.097873], [24.722687, 121.097842], [24.722435, 121.097956]
-		, [24.722058, 121.097158]], { color: 'red' }).addTo(map);
+		, [24.722058, 121.097158], [24.722048, 121.097158], [24.722426, 121.097955], [24.722002, 121.098126], [24.722009, 121.098166], [24.721904, 121.098212], [24.721993, 121.098569]
+		, [24.722026, 121.098560], [24.721922, 121.098194], [24.721673, 121.098275], [24.721755, 121.098568], [24.721771, 121.098563], [24.721688, 121.098267], [24.721698, 121.098237]
+		, [24.721573, 121.098286], [24.721521, 121.098331], [24.721284, 121.098416], [24.721003, 121.098471], [24.720620, 121.098576], [24.720584, 121.098633], [24.720539, 121.098596]
+		, [24.719937, 121.098699], [24.719685, 121.097251], [24.720106, 121.097178], [24.720103, 121.097160], [24.719668, 121.097231], [24.719625, 121.096927]], { color: 'red' }).addTo(map);
 		
 		/*map.setView([23.97565,120.97388], 6);*/
-		map.setView([24.736424,121.091371], 6);
 		map.setMaxBounds([[90,-180], [-90,180]]);
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
 		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
@@ -97,7 +106,7 @@ window.addEventListener("load", function(){
 				document.getElementById("menu").classList.add("close");
 			}
 		});
-		document.getElementById("mask-toggle").addEventListener("click",function(){
+		/*document.getElementById("mask-toggle").addEventListener("click",function(){
 			this.classList.toggle("child");
 			childrenStat = (childrenStat) ? false : true;
 			if (childrenStat)
@@ -109,10 +118,10 @@ window.addEventListener("load", function(){
 					layer.setIcon(storeIcon[markerOrder("adult",layer.getPopup().getContent().getElementsByClassName("number")[0].innerText)]);
 				});
 			storeMarkers.refreshClusters();
-		});
-		document.getElementById("help").addEventListener("click",function(){
+		});*/
+		/*document.getElementById("help").addEventListener("click",function(){
 			document.getElementById("guide").classList.toggle("open");
-		});
+		});*/
 		xhr.addEventListener("load", function(){
 			let data = JSON.parse(this.responseText),index = {};
 			for (let i = 0; i < data.features.length; i++) {
