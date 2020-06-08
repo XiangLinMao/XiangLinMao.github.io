@@ -93,7 +93,6 @@
 .leaflet-overlay-pane svg {
 	-moz-user-select: none;
 	}
-
 .leaflet-pane         { z-index: 400; }
 
 .leaflet-tile-pane    { z-index: 200; }

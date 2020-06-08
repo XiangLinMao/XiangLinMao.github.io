@@ -11,6 +11,15 @@ window.addEventListener("load", function(){
 	require(["leaflet.markercluster"],function(){
 		/*let map = L.map('app', {center: [24.736424,121.091371], zoom: 16}),*/
 		var startpoint = new L.icon({iconUrl:"images/sufficient.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]});
+		var greenIcon = new L.Icon({
+			iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+			shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+			iconSize: [25, 41],
+			iconAnchor: [12, 41],
+			popupAnchor: [1, -34],
+			shadowSize: [41, 41]
+		});
+		//L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
 		let map = L.map('app', {center: [24.736424,121.091371], zoom: 16,attributionControl:false,zoomControl:false,minZoom:3,maxZoom:19}),
 			/*openstreetmap*/
 			/*osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',*/
@@ -19,31 +28,6 @@ window.addEventListener("load", function(){
 			today = new Date(),
 			currentIcon = L.icon({iconUrl:"images/current.svg",className:"animation",iconSize:[24,24]}),
 			currentMar = L.marker([0,0], {icon: currentIcon}),
-			/*storeIcon = [
-				L.icon({iconUrl:"images/sold-out.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
-				L.icon({iconUrl:"images/emergency.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
-				L.icon({iconUrl:"images/warning.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
-				L.icon({iconUrl:"images/sufficient.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]})
-			],*/
-			/*storeClass = ["sold-out","emergency","warning","sufficient"],
-			xhr = new XMLHttpRequest(),
-			storeMarkers = L.markerClusterGroup({
-				iconCreateFunction: function(cluster) {
-					let list = cluster.getAllChildMarkers(),
-						order = 0;
-					for (let i = 0; i < list.length; i++) {
-						order = order < 3 && list[i].options.icon.options.iconUrl === storeIcon[3].options.iconUrl ? 3 :
-								order < 2 && list[i].options.icon.options.iconUrl === storeIcon[2].options.iconUrl ? 2 :
-								order < 1 && list[i].options.icon.options.iconUrl === storeIcon[1].options.iconUrl ? 1 :
-								list[i].options.icon.options.iconUrl === storeIcon[0] ? 0 : order;
-					}
-					return L.divIcon({className:"icon-cluster " + storeClass[order],iconSize:[72,30]});
-				},
-				removeOutsideVisibleBounds: true,
-				animate: true,
-				maxClusterRadius: 40
-			}),*/
-			/*childrenStat = false,*/
 			locationPermit = false;
 		
 		map.addLayer(osm);
@@ -54,8 +38,15 @@ window.addEventListener("load", function(){
 
 		
 
-		var marker = L.marker([24.736576,121.0928152], {icon: startpoint}).bindPopup('<h1>竹東郵局</h1>').addTo(map);
-		//var marker = L.marker([24.723126,121.098473], {icon: startpoint}).bindPopup('<h1>中豐路一段89號</h1>')
+		//var marker = L.marker([24.736576,121.0928152], {icon: startpoint}).bindPopup('<h1>竹東郵局</h1>').addTo(map);
+		
+		var data = [
+			{'name':'竹東郵局',lat:24.736576,lng:121.0928152},
+			{'name':'中豐路一段155號',lat:24.7222411,lng:121.0944373}
+		  ]
+		
+		var markers = new L.MarkerClusterGroup().addTo(map);;
+		  //var marker = L.marker([24.723126,121.098473], {icon: startpoint}).bindPopup('<h1>中豐路一段89號</h1>')
 		//marker.bindPopup('<h1>竹東郵局</h1>')
 		/*marker.openPopup();*/
 		/*var kine = L.polyline([[24.736576,121.0928152], [24.736628, 121.093060]], { color: 'red' }).addTo(map);*/
@@ -85,6 +76,16 @@ window.addEventListener("load", function(){
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
 		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
 		document.getElementById("test").addEventListener("click", function(){line12.addTo(map)});
+		document.getElementById("test").addEventListener("click", function(){for(let i =0;data.length>i;i++){
+			console.log(data[i].name)
+			markers.addLayer(L.marker([data[i].lat,data[i].lng],{icon: greenIcon}).bindPopup('<h1>' + data[i].name + '</h1>'));
+		  // add more markers here...
+			// L.marker().addTo(map)
+			//   )
+		  }
+		map.addLayer(markers);});
+		/*document.getElementById("test").addEventListener("click", function(){
+			L.marker().addTo(map).bindPopup('<h1>'+ data[i].name +'</h1>')});*/
 		//document.getElementById("test").addEventListener("click", function(){marker.addTo(map)});
 		//document.getElementById("test").addEventListener("click", function(){marker1.addTo(map)});
 		document.getElementById("current-location").addEventListener("click",function(){
@@ -120,23 +121,8 @@ window.addEventListener("load", function(){
 				document.getElementById("menu").classList.add("close");
 			}
 		});
-		/*document.getElementById("mask-toggle").addEventListener("click",function(){
-			this.classList.toggle("child");
-			childrenStat = (childrenStat) ? false : true;
-			if (childrenStat)
-				storeMarkers.eachLayer(function(layer){
-					layer.setIcon(storeIcon[markerOrder("child",layer.getPopup().getContent().getElementsByClassName("number")[1].innerText)]);
-				});
-			else
-				storeMarkers.eachLayer(function(layer){
-					layer.setIcon(storeIcon[markerOrder("adult",layer.getPopup().getContent().getElementsByClassName("number")[0].innerText)]);
-				});
-			storeMarkers.refreshClusters();
-		});*/
-		/*document.getElementById("help").addEventListener("click",function(){
-			document.getElementById("guide").classList.toggle("open");
-		});*/
-		xhr.addEventListener("load", function(){
+		
+		/*xhr.addEventListener("load", function(){
 			let data = JSON.parse(this.responseText),index = {};
 			for (let i = 0; i < data.features.length; i++) {
 				index[data.features[i].properties.id] = i;
@@ -183,7 +169,7 @@ window.addEventListener("load", function(){
 				});
 				storeMarkers.addLayer(marker);
 			});*/
-			map.addLayer(storeMarkers);
+			/*map.addLayer(storeMarkers);
 			if (location.hash != "") {
 				storeMarkers.eachLayer(function(layer){
 					let markerData = layer.getPopup().getContent().dataset;
@@ -193,7 +179,7 @@ window.addEventListener("load", function(){
 						return this;
 					}
 				});
-			}
+			}*/
 			/*window.setInterval(function(){
 				let updator = new XMLHttpRequest;
 				index = {};
@@ -226,28 +212,7 @@ window.addEventListener("load", function(){
 			},30000);*/
 		});
 		/*xhr.open("GET", "htgithubusercontent.comtps://raw./kiang/pharmacies/master/json/points.json?time=" + new Date().getTime());
-		xhr.send();*/
-	});
+		xhr.send();
+	});*/
 });
 });
-/*function markerOrder(str,num) {
-	let rate;
-	switch (str) {
-	case "adult":
-		rate = num / MAX_ADULT_STOCK;
-		return rate >= 0.5 ? 3 : rate >= 0.2 ? 2 : rate > 0 ? 1 : 0;
-	case "child":
-		rate = num / MAX_CHILD_STOCK;
-		return rate >= 0.5 ? 3 : rate >= 0.2 ? 2 : rate > 0 ? 1 : 0;
-	}
-}
-function geoDistance(arr) {
-	for (let i = 0; i < 2; i++)
-		for (let j = 0; j < 2; j++)
-			arr[i][j] = arr[i][j] / 180 * Math.PI;
-	let EARTH_RADIUS = 6371000,
-		d = 2 * EARTH_RADIUS * Math.asin(Math.sqrt(Math.pow(Math.sin((arr[1][0] - arr[0][0]) / 2),2) + Math.cos(arr[0][0]) * Math.cos(arr[1][0]) * Math.pow(Math.sin((arr[1][1] - arr[0][1]) / 2),2)));
-	
-	d = d > 1000 ? (d / 1000).toFixed(2) + "km" : d.toFixed(2) + "m";
-	return d;
-}*/
