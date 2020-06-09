@@ -101,17 +101,17 @@ window.addEventListener("load", function(){
 		, [24.721074, 121.097248], [24.721164, 121.097300], [24.721458, 121.098015], [24.721467, 121.098000], [24.721162, 121.097269], [24.721102, 121.097224], [24.721303, 121.097071]
 		, [24.721557, 121.097472], [24.721721, 121.097870], [24.721738, 121.097859], [24.721559, 121.097419], [24.721715, 121.097359], [24.721898, 121.097729], [24.721932, 121.097708]
 		, [24.721727, 121.097309], [24.721524, 121.097393], [24.721314, 121.097048], [24.721737, 121.096752], [24.722001, 121.097170], [24.722035, 121.097139], [24.721775, 121.096721]
-		, [24.722043, 121.096539]], { color: 'red' }).addTo(map);;
+		, [24.722043, 121.096539]], { color: 'red' });;
 		
 		map.setMaxBounds([[90,-180], [-90,180]]);
 		document.getElementById("zoom-in").addEventListener("click",function(){map.zoomIn()});
 		document.getElementById("zoom-out").addEventListener("click",function(){map.zoomOut()});
 		document.getElementById("test").addEventListener("click", function(){line12.addTo(map)});
-		/*document.getElementById("test").addEventListener("click", function(){for(let i =0;data.length>i;i++){
+		document.getElementById("test").addEventListener("click", function(){for(let i =0;data.length>i;i++){
 			console.log(data[i].name)
 			markers.addLayer(L.marker([data[i].lat,data[i].lng],{icon: greenIcon}).bindPopup('<h1>' + data[i].name + '</h1>'));
 		  }
-		map.addLayer(markers);});*/
+		map.addLayer(markers);});
 		
 		
 		document.getElementById("current-location").addEventListener("click",function(){
