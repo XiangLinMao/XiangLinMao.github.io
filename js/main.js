@@ -28,6 +28,31 @@ window.addEventListener("load", function(){
 			today = new Date(),
 			currentIcon = L.icon({iconUrl:"images/current.svg",className:"animation",iconSize:[24,24]}),
 			currentMar = L.marker([0,0], {icon: currentIcon}),
+			storeIcon = [
+				L.icon({iconUrl:"images/sold-out.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
+				L.icon({iconUrl:"images/emergency.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
+				L.icon({iconUrl:"images/warning.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]}),
+				L.icon({iconUrl:"images/sufficient.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]})
+			],
+			storeClass = ["sold-out","emergency","warning","sufficient"],
+			xhr = new XMLHttpRequest(),
+			storeMarkers = L.markerClusterGroup({
+				iconCreateFunction: function(cluster) {
+					let list = cluster.getAllChildMarkers(),
+						order = 0;
+					for (let i = 0; i < list.length; i++) {
+						order = order < 3 && list[i].options.icon.options.iconUrl === storeIcon[3].options.iconUrl ? 3 :
+								order < 2 && list[i].options.icon.options.iconUrl === storeIcon[2].options.iconUrl ? 2 :
+								order < 1 && list[i].options.icon.options.iconUrl === storeIcon[1].options.iconUrl ? 1 :
+								list[i].options.icon.options.iconUrl === storeIcon[0] ? 0 : order;
+					}
+					return L.divIcon({className:"icon-cluster " + storeClass[order],iconSize:[72,30]});
+				},
+				removeOutsideVisibleBounds: true,
+				animate: true,
+				maxClusterRadius: 40
+			}),
+			childrenStat = false,
 			locationPermit = false;
 		
 		map.addLayer(osm);
@@ -79,15 +104,10 @@ window.addEventListener("load", function(){
 		document.getElementById("test").addEventListener("click", function(){for(let i =0;data.length>i;i++){
 			console.log(data[i].name)
 			markers.addLayer(L.marker([data[i].lat,data[i].lng],{icon: greenIcon}).bindPopup('<h1>' + data[i].name + '</h1>'));
-		  // add more markers here...
-			// L.marker().addTo(map)
-			//   )
 		  }
 		map.addLayer(markers);});
-		/*document.getElementById("test").addEventListener("click", function(){
-			L.marker().addTo(map).bindPopup('<h1>'+ data[i].name +'</h1>')});*/
-		//document.getElementById("test").addEventListener("click", function(){marker.addTo(map)});
-		//document.getElementById("test").addEventListener("click", function(){marker1.addTo(map)});
+		
+		
 		document.getElementById("current-location").addEventListener("click",function(){
 			if(locationPermit) {
 				map.flyTo(currentMar.getLatLng(),18);
