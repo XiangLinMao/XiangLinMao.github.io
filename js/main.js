@@ -6,8 +6,8 @@ const MAX_ADULT_STOCK = 1800,
 	
 
 
-window.addEventListener("load", function(){
-	require(["pace.min","leaflet"],function(){
+
+require(["pace.min","leaflet"],function(){
 	require(["leaflet.markercluster"],function(){
 		/*let map = L.map('app', {center: [24.736424,121.091371], zoom: 16}),*/
 		var startpoint = new L.icon({iconUrl:"images/sufficient.svg",iconSize:[48,48],iconAnchor:[24,48],popupAnchor:[0,-48]});
@@ -22,7 +22,7 @@ window.addEventListener("load", function(){
 		//L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
 		let map = L.map('app', {center: [24.736424,121.091371], zoom: 16,attributionControl:false,zoomControl:false,minZoom:3,maxZoom:19}),
 			/*openstreetmap*/
-			/*osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',*/
+			//osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			osmUrl="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
 			osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 19}),
 			today = new Date(),
@@ -65,6 +65,14 @@ window.addEventListener("load", function(){
 
 		//var marker = L.marker([24.736576,121.0928152], {icon: startpoint}).bindPopup('<h1>竹東郵局</h1>').addTo(map);
 		
+
+		
+		/*var lineArr=[[39.920969009399414, 116.38572692871094],[39.91101264953613,116.3862419128418],[39.91161346435547, 116.39636993408203],[39.9217414855957,    
+    		116.3957691192627],[39.9213981628418, 116.38589859008789]];
+		var line =newL.polyline(lineArr,{color:'red',opacity:'0.8',weight:'3'}).addTo(map)});*/
+
+
+
 		var data = [
 			{'name':'竹東郵局',lat:24.736576,lng:121.0928152},
 			{'name':'中豐路一段155號',lat:24.7222411,lng:121.0944373}
@@ -241,5 +249,4 @@ window.addEventListener("load", function(){
 		/*xhr.open("GET", "htgithubusercontent.comtps://raw./kiang/pharmacies/master/json/points.json?time=" + new Date().getTime());
 		xhr.send();
 	});*/
-});
 });
